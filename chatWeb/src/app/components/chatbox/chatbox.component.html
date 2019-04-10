@@ -1,0 +1,15 @@
+<div>
+  <div>
+    <ng-container *ngFor="let item of this.records">
+      <b>{{item.sender}} {{item.sendtime}}</b>
+      <p>{{item.content}}</p>
+    </ng-container>
+    
+  </div>
+  <p>
+    <b>
+      <input [(ngModel)]="inputContent" type="text" >
+      <button (click)="sendClick()" >send</button>
+    </b>
+  </p>
+</div>

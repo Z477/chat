@@ -1,0 +1,13 @@
+<p>
+  user: {{whoLogin.name}}
+</p>
+<table>
+    <th>contacts</th>
+    <tr *ngFor="let item of this.otherContacts">
+      <!--()代表事件，有一个$event的输出，但可以不用，比如下面就没有用，而是传入item； []代表输入-->
+      <td (click)="contactClick(item)">{{item.name}}</td>
+    </tr>
+    <ng-container *ngIf="whoContact !== undefined">
+      <app-chatbox [whoTouch]="whoContact" [whoLogin]="this.whoLogin"></app-chatbox>
+    </ng-container>
+</table>

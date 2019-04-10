@@ -1,0 +1,23 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!--ng-container是个容器，不会渲染到页面里-->
+<ng-container [ngSwitch]="curPageType">
+  <ng-container *ngSwitchCase="pageTypeEnum.LoginPage">
+      <div style="text-align:center">
+          <h1>
+            Welcome to Connection!
+          </h1>
+        </div>
+        <span style="text-align:center">
+          <!--属性绑定[ngModel] + 事件绑定(ngModelChange) = 双向绑定[(ngModel)]-->
+          <select [ngModel]="whoLoginId" (ngModelChange)="setWhoLoginId($event)">
+          <!--循环生成option，this.contacts代表组件”AppComponent“的一个属性-->  
+            <option *ngFor="let item of this.contacts" [value]="item.id">{{item.name}}</option>
+          </select> 
+          <!--监听button的click事件，一旦发生就调用函数loginClick-->
+          <button (click)="loginClick()">login</button>
+        </span>
+  </ng-container>
+  <ng-container *ngSwitchCase="pageTypeEnum.HomePage">
+      <app-homepage [whoLogin]="whoLogin"></app-homepage>
+  </ng-container>
+</ng-container>
